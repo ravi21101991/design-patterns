@@ -1,5 +1,7 @@
 package com.algorithms.demo.sort;
 
+import com.algorithms.demo.utils.ArrayUtils;
+
 /**
  * Start looping through the entire list of elements and find a minimum value
  * and place it into first index and then repeat the task for next position from
@@ -20,11 +22,11 @@ package com.algorithms.demo.sort;
  */
 public class SelectionSort {
 	public static void main(String[] args) {
-		int[] numbers = { 10, 1, 20, 15, 60, 15, 19, 0 };
-		printArrayWithMessage("Unsorted Array: ", numbers);
+		int[] numbers = ArrayUtils.generateRandomIntArray(10,30);
+		ArrayUtils.printArrayWithMessage("Unsorted Array: ", numbers);
 
 		selectionSort(numbers);
-		printArrayWithMessage("Sorterd Array: ", numbers);
+		ArrayUtils.printArrayWithMessage("Sorterd Array: ", numbers);
 	}
 
 	private static void selectionSort(int[] numbers) {
@@ -35,21 +37,7 @@ public class SelectionSort {
 					minimum = j;
 				}
 			}
-			swapValues(i, minimum, numbers);
+			ArrayUtils.swapValues(i, minimum, numbers);
 		}
-	}
-
-	private static void swapValues(int index1, int index2, int[] numbers) {
-		int temp = numbers[index1];
-		numbers[index1] = numbers[index2];
-		numbers[index2] = temp;
-	}
-
-	private static void printArrayWithMessage(String message, int[] numbers) {
-		System.out.println(message);
-		for (int i : numbers) {
-			System.out.print(i + " ");
-		}
-		System.out.println();
 	}
 }

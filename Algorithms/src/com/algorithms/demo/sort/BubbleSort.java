@@ -1,53 +1,57 @@
 package com.algorithms.demo.sort;
 
+import com.algorithms.demo.utils.ArrayUtils;
+
 public class BubbleSort {
-	
-	private int[] numbers = { 10, 9, 8, 6, 5, 4, 3, 2, 1, 7 };
+
+	private enum SortOrder {
+		ASCENDING, DESCENDING;
+	}
 
 	public static void main(String[] args) {
-		BubbleSort bubbleSort = new BubbleSort();
+		int[] numbers = ArrayUtils.generateRandomIntArray(10,30);
+		ArrayUtils.printArrayWithMessage("Unsorted List: ", numbers);
 
-		System.out.println("\nUnsorted Array");
-		bubbleSort.printArray();
+		bubbleSort(numbers, SortOrder.ASCENDING);
+		ArrayUtils.printArrayWithMessage("Sorted Ascending Order: ", numbers);
 
-		System.out.println("\n\nSorted Array: Ascending");
-		bubbleSort.bubbleSortAscending();
-		bubbleSort.printArray();
-
-		System.out.println("\n\nSorted Array: Descending");
-		bubbleSort.bubbleSortDescending();
-		bubbleSort.printArray();
+		bubbleSort(numbers, SortOrder.DESCENDING);
+		ArrayUtils.printArrayWithMessage("Sorted Descending Order: ", numbers);
 	}
 
-	private void printArray() {
-		for (int i : numbers) {
-			System.out.print(i + " ");
-		}
-	}
+	/**
+	 * Finds the maximum or minimum number or bubbles it up to the either end of
+	 * the array based on the order in every iteration. For instance if the sort
+	 * order is ascending i.e natural order then, the adjacent numbers are
+	 * compared and if the number on the right side is lower than the number on
+	 * the left side then they are swapped and iteration.
+	 */
+	private static void bubbleSort(int[] numbers, SortOrder order) {
+		if (order == null)
+			return;
 
-	private void bubbleSortAscending() {
-		for (int i = numbers.length - 1; i > 0; i--) {
-			for (int j = 0; j < i; j++) {
-				if (numbers[j] > numbers[j + 1]) {
-					swapNumbers(j, j + 1);
+		switch (order) {
+		case ASCENDING: {
+			for (int i = numbers.length - 1; i >= 0; i--) {
+				for (int j = 0; j < i; j++) {
+					if (numbers[j] > numbers[j + 1]) {
+						ArrayUtils.swapValues(j, j + 1, numbers);
+					}
 				}
 			}
+			break;
 		}
-	}
 
-	private void bubbleSortDescending() {
-		for (int i = numbers.length - 1; i > 0; i--) {
-			for (int j = 0; j < i; j++) {
-				if (numbers[j] < numbers[j + 1]) {
-					swapNumbers(j, j + 1);
+		case DESCENDING: {
+			for (int i = numbers.length - 1; i >= 0; i--) {
+				for (int j = 0; j < i; j++) {
+					if (numbers[j] < numbers[j + 1]) {
+						ArrayUtils.swapValues(j, j + 1, numbers);
+					}
 				}
 			}
+			break;
 		}
-	}
-
-	private void swapNumbers(int i, int j) {
-		int temp = numbers[i];
-		numbers[i] = numbers[j];
-		numbers[j] = temp;
+		}
 	}
 }

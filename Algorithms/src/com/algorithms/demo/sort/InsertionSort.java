@@ -1,5 +1,7 @@
 package com.algorithms.demo.sort;
 
+import com.algorithms.demo.utils.ArrayUtils;
+
 /**
  * This sort is similar to sorting the cards in a card game. Initially you have
  * a single card in your hand while dealer is distributing them. As the second
@@ -11,11 +13,11 @@ package com.algorithms.demo.sort;
 
 public class InsertionSort {
 	public static void main(String[] args) {
-		int[] numbers = { 3, 2, 1, 10, 20, 15, 17, 16 };
-		printArrayWithMessage("Unsorted Array: ", numbers);
+		int[] numbers = ArrayUtils.generateRandomIntArray(10,30);
+		ArrayUtils.printArrayWithMessage("Unsorted Array: ", numbers);
 
 		insertionSort(numbers);
-		printArrayWithMessage("Sorted Array: ", numbers);
+		ArrayUtils.printArrayWithMessage("Sorted Array: ", numbers);
 	}
 
 	/**
@@ -40,13 +42,5 @@ public class InsertionSort {
 			}
 			numbers[j + 1] = temp;
 		}
-	}
-
-	private static void printArrayWithMessage(String message, int[] numbers) {
-		System.out.println(message);
-		for (int i : numbers) {
-			System.out.print(i + " ");
-		}
-		System.out.println();
 	}
 }
