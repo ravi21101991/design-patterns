@@ -1,4 +1,4 @@
-package com.algorithms.demo;
+package com.algorithms.demo.sort;
 
 public class BubbleSort {
 	

@@ -1,4 +1,4 @@
-package com.algorithms.demo;
+package com.algorithms.demo.sort;
 
 /**
  * Start looping through the entire list of elements and find a minimum value

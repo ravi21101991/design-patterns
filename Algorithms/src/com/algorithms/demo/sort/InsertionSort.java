@@ -1,4 +1,4 @@
-package com.algorithms.demo;
+package com.algorithms.demo.sort;
 
 /**
  * This sort is similar to sorting the cards in a card game. Initially you have
