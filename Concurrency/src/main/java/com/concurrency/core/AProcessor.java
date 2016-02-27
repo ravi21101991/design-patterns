@@ -19,6 +19,7 @@ public class AProcessor {
 				while (list.size() == LIMIT) {
 					mutex.wait();
 				}
+				System.out.printf("\n VALUE PRODUCED: %d", value);
 				list.add(value++);
 				mutex.notify();
 			}
@@ -32,7 +33,7 @@ public class AProcessor {
 				while (list.size() == 0) {
 					mutex.wait();
 				}
-				System.out.printf("\n Value consumed is %d.", list.removeFirst());
+				System.out.printf("\n VALUE CONSUMED: %d", list.removeFirst());
 				mutex.notify();
 			}
 		}
